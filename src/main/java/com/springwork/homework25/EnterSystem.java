@@ -3,24 +3,23 @@ package com.springwork.homework25;
 import org.springframework.stereotype.Service;
 
 @Service
-public class EnterSystem extends IDSystem {
+public class EnterSystem implements EnterSystemInterface {
     @Override
-    public String enterSystem(IDSystem.getlogin(), IDSystem password, IDSystem confirmPssword) {
-        if (getLogin().length() >= 20) {
-            throw new CheckException("WrongLoginException");
+    public void enterSystem (String log, String pass, String conf)  {
+        if (log.length() >= 20) {
+            throw new CheckException ("WrongLoginException");
+            }
+        System.out.println(log);
+        if (pass.length() > 20) {
+            throw new CheckException ("WrongPasswordException");
         }
-        return login;
-        if (password.length() > 20) {
-            throw new CheckException("WrongPasswordException");
-        }
-        return pass;
+        System.out.println(pass);
         if (conf.equals(pass)) {
-            return"done";
+            System.out.println("done");
         } else {
-            throw new CheckException("WrongPasswordsException");
+            new CheckException ("WrongConfirmPasswordException");
         }
-        return conf;
+        System.out.println(conf);
     }
-
 }
 

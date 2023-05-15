@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.sql.SQLOutput;
 
 @RestController
-@RequestMapping("/enterSystem")
+@RequestMapping("/totalSystem")
 public class EnterController {
     private final EnterSystemInterface enterSystemInterface;
 
@@ -18,42 +18,17 @@ public class EnterController {
         this.enterSystemInterface = enterSystemInterface;
     }
 
-    @GetMapping("/login")
-    public String enterSystem(@RequestParam String log, @RequestParam String pass, @RequestParam String conf) {
-        final String logSystem;
-        final String passSystem;
-        final String confSystem;
+    @GetMapping("/enterSysem")
+    public void enterSystem(@RequestParam String log, @RequestParam String pass, @RequestParam String conf) {
         try {
-            logSystem = enterSystemInterface.enterSystem(log);
+            enterSystemInterface.enterSystem(log, pass, conf);
         } catch (CheckException e) {
-            return "WrongLoginException";
+            System.out.println("WrongLoginException");
         }
-        return logSystem;
+        System.out.println(log + " " + pass + " " + conf);
+
     }
-
-    @GetMapping("/password")
-    public String password(@RequestParam String pass) {
-
-        try {
-            passSystem = enterSystemInterface.password(pass);
-        } catch (CheckException e) {
-            return "WrongPasswordException";
-        }
-        return passSystem;
-    }
-
-    @GetMapping("/confirmPassword")
-    public String confirmPassword(@RequestParam String conf, @RequestParam String pass) {
-
-        try {
-            confSystem = enterSystemInterface.confirmPassword(conf);
-        } catch (CheckException e) {
-
-            return "WrongPasswordException";
-        }
-        return confSystem;
-        }
-    }
+}
 
 
 
