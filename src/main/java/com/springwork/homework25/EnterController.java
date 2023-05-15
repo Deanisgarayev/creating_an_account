@@ -19,10 +19,12 @@ public class EnterController {
     }
 
     @GetMapping("/login")
-    public String login(@RequestParam String log) {
+    public String enterSystem(@RequestParam String log, @RequestParam String pass, @RequestParam String conf) {
         final String logSystem;
+        final String passSystem;
+        final String confSystem;
         try {
-            logSystem = enterSystemInterface.login(log);
+            logSystem = enterSystemInterface.enterSystem(log);
         } catch (CheckException e) {
             return "WrongLoginException";
         }
@@ -31,7 +33,7 @@ public class EnterController {
 
     @GetMapping("/password")
     public String password(@RequestParam String pass) {
-        final String passSystem;
+
         try {
             passSystem = enterSystemInterface.password(pass);
         } catch (CheckException e) {
@@ -42,7 +44,7 @@ public class EnterController {
 
     @GetMapping("/confirmPassword")
     public String confirmPassword(@RequestParam String conf, @RequestParam String pass) {
-        final String confSystem;
+
         try {
             confSystem = enterSystemInterface.confirmPassword(conf);
         } catch (CheckException e) {

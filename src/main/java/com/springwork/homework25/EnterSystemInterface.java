@@ -1,9 +1,6 @@
 package com.springwork.homework25;
 
 public interface EnterSystemInterface {
-    String login(String log) ;
+    String enterSystem(String log, String pass, String conf) ;
 
-    String password(String pass);
-
-    String confirmPassword(String conf);
 }
