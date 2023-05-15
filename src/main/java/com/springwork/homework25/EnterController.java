@@ -22,39 +22,36 @@ public class EnterController {
     public String login(@RequestParam String log) {
         final String logSystem;
         try {
-            logSystem = EnterSystemInterface.login(log);
-        } catch (WrongAmountOfLogin e) {
-            System.out.println("WrongLoginException");
+            logSystem = enterSystemInterface.login(log);
+        } catch (CheckException e) {
+            return "WrongLoginException";
         }
-       return logSystem;
+        return logSystem;
     }
 
     @GetMapping("/password")
     public String password(@RequestParam String pass) {
         final String passSystem;
         try {
-            passSystem = EnterSystemInterface.password(pass);
-        } catch (WrongAmountOfPassword e) {
-            System.out.println("WrongLoginException");
+            passSystem = enterSystemInterface.password(pass);
+        } catch (CheckException e) {
+            return "WrongPasswordException";
         }
         return passSystem;
     }
 
     @GetMapping("/confirmPassword")
-    public String confirmPassword(@RequestParam String conf) {
+    public String confirmPassword(@RequestParam String conf, @RequestParam String pass) {
         final String confSystem;
         try {
-            if (conf.equals(pass)) {
-                System.out.println("done");
-            } else {
-                throw new CheckException(unequalPasswords);
-            }
-            confirmPassword()= EnterSystemInterface.confirmpassword(conf);
-        } catch (unequalPasswords e) {
-            System.out.println("WrongLoginException");
+            confSystem = enterSystemInterface.confirmPassword(conf);
+        } catch (CheckException e) {
+
+            return "WrongPasswordException";
         }
         return confSystem;
-    }
         }
+    }
+
 
 
