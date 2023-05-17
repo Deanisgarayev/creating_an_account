@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 public  class EnterSystem implements EnterSystemInterface {
     @Override
     public String login(String login) {
+        login.matches("^[a-zA-Z0-9_]*$");
         if (login.length() > 20) {
             throw new CheckException("WrongLoginException");
         }
@@ -14,6 +15,7 @@ public  class EnterSystem implements EnterSystemInterface {
 
     @Override
     public String password(String password) {
+        password.matches("^[a-zA-Z0-9_]*$");
         if (password.length() >= 20) {
             throw new CheckException("WrongPasswordException");
         }
