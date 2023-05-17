@@ -25,6 +25,8 @@ public class EnterController {
             logSystem = enterSystemInterface.login(login);
         } catch (CheckException e) {
             return "WrongLoginException";
+        } catch (SpellingException e) {
+            return "WrongSpelling";
         }
         return logSystem;
     }
@@ -36,10 +38,15 @@ public class EnterController {
             passSystem = enterSystemInterface.password(password, confirmPassword);
         } catch (CheckException e) {
             return "WrongPasswordException";
+        } catch (EqualsCheckException e) {
+            return "They are not equal";
+        } catch (SpellingException e) {
+            return "WrongSpelling";
         }
-        return passSystem;
+            return passSystem;
+        }
     }
-}
+
 
 
 

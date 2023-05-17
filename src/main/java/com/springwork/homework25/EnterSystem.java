@@ -8,7 +8,7 @@ public  class EnterSystem implements EnterSystemInterface {
     public String login(String login) {
         if (login.matches("^[a-zA-Z0-9_]*$")) {
         } else {
-            throw new CheckException("WrongLoginException");
+            throw new SpellingException("WrongSpelling");
         }
         if (login.length() > 20) {
             throw new CheckException("WrongLoginException");
@@ -20,7 +20,7 @@ public  class EnterSystem implements EnterSystemInterface {
     public String password(String password, String confirmPassword) {
         if (password.matches("^[a-zA-Z0-9_]*$")) {
         } else {
-            throw new CheckException("WrongPasswordException");
+            throw new SpellingException("WrongSpelling");
         }
         if (password.length() >= 20) {
             throw new CheckException("WrongPasswordException");
@@ -28,7 +28,7 @@ public  class EnterSystem implements EnterSystemInterface {
         if (password.equals(confirmPassword)) {
 
         } else {
-            throw new CheckException("WrongPasswordsException");
+            throw new EqualsCheckException("They are not equal");
         }
         return "done";
     }
