@@ -5,5 +5,5 @@ public interface EnterSystemInterface {
 
     String password(String pass);
 
-    String confirmPassword(String conf);
+//    String confirmPassword(String conf);
 }
