@@ -30,28 +30,16 @@ public class EnterController {
     }
 
     @GetMapping("/password")
-    public String password(@RequestParam String password) {
+    public String password(@RequestParam String password, @RequestParam String confirmPassword) {
         final String passSystem;
         try {
-            passSystem = enterSystemInterface.password(password);
+            passSystem = enterSystemInterface.password(password, confirmPassword);
         } catch (CheckException e) {
             return "WrongPasswordException";
         }
         return passSystem;
     }
-
-//    @GetMapping("/confirmPassword")
-//    public String confirmPassword(@RequestParam String conf, @RequestParam String pass) {
-//        final String confSystem;
-//        try {
-//            confSystem = enterSystemInterface.confirmPassword(conf);
-//        } catch (CheckException e) {
-//
-//            return "WrongPasswordException";
-//        }
-//        return confSystem;
-//        }
-    }
+}
 
 
 
