@@ -6,8 +6,7 @@ import org.springframework.stereotype.Service;
 public  class EnterSystem implements EnterSystemInterface {
     @Override
     public String login(String login) {
-        if (login.matches("^[a-zA-Z0-9_]*$")) {
-        } else {
+        if (! login.matches("^[a-zA-Z0-9_]*$")) {
             throw new SpellingException("WrongSpelling");
         }
         if (login.length() > 20) {
@@ -18,16 +17,13 @@ public  class EnterSystem implements EnterSystemInterface {
 
     @Override
     public String password(String password, String confirmPassword) {
-        if (password.matches("^[a-zA-Z0-9_]*$")) {
-        } else {
+        if (! password.matches("^[a-zA-Z0-9_]*$")) {
             throw new SpellingException("WrongSpelling");
         }
         if (password.length() >= 20) {
             throw new CheckException("WrongPasswordException");
         }
-        if (password.equals(confirmPassword)) {
-
-        } else {
+        if (! password.equals(confirmPassword)) {
             throw new EqualsCheckException("They are not equal");
         }
         return "done";
