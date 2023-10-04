@@ -1,6 +1,6 @@
-package com.springwork.homework25;
+package com.springwork.homework25.exception;
 
-public class EqualsCheckException extends RuntimeException{
+public class EqualsCheckException extends RuntimeException {
     public EqualsCheckException(String message) {
         super(message);
     }

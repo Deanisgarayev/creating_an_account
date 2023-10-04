@@ -1,6 +1,6 @@
-package com.springwork.homework25;
+package com.springwork.homework25.exception;
 
-public class CheckException extends RuntimeException{
+public class CheckException extends RuntimeException {
     public CheckException(String message) {
         super(message);
     }
