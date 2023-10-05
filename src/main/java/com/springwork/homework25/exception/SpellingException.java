@@ -1,6 +1,6 @@
-package com.springwork.homework25;
+package com.springwork.homework25.exception;
 
-public class SpellingException extends RuntimeException{
+public class SpellingException extends RuntimeException {
     public SpellingException(String message) {
         super(message);
     }
